@@ -1,0 +1,23 @@
+releases:
+  - name: postgre-sql
+    chart: ./postgresql
+    namespace: monitoring
+    
+  
+  - name: pg-admin
+    chart: ./pgadmin4
+    namespace: monitoring
+
+  - name: flask
+    chart: ./flask-app
+    namespace: monitoring
+    needs:
+    - postgre-sql
+
+  - name: nginx-ingress
+    chart: ./ingress-nginx
+    namespace: nginx-ingress
+
+  - name: cert-manager
+    chart: ./cert-manager
+    namespace: cert-manager

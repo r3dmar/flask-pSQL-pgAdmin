@@ -1,0 +1,61 @@
+# comment
+
+# Match any file or path named .helmignore
+.helmignore
+
+# Match any file or path named .git
+.git*
+
+# Match any text file
+*.txt
+
+# Match only directories named mydir
+mydir/
+
+# Match only text files in the top-level directory
+/*.txt
+
+# Match only the file foo.txt in the top-level directory
+/foo.txt
+
+# Match any file named ab.txt, ac.txt, or ad.txt
+a[b-d].txt
+
+# Match any file under subdir matching temp*
+*/temp*
+
+*/*/temp*
+temp?
+
+*.sh
+README.md
+*.log
+
+.DS_Store
+# Common VCS dirs
+.git/
+.gitignore
+.bzr/
+.bzrignore
+.hg/
+.hgignore
+.svn/
+# Common backup files
+*.swp
+*.bak
+*.tmp
+*~
+# Various IDEs
+.project
+.idea/
+*.tmproj
+# helm/charts
+OWNERS
+README.md
+CONTRIBUTING.md
+hack/
+ci/
+kube-prometheus-*.tgz
+custom_dashboards
+unittests/
+*.tgz
