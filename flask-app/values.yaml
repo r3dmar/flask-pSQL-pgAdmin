@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: r3dmar/flask-app
+  repository: ghcr.io/r3dmar/flask-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v2.3"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
