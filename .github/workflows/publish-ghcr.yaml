@@ -6,22 +6,15 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_publish:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3 
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-
-    - name: Login to GitHub Container Registry
-      run: echo "${{ secrets.GHCR_LOGIN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-    - name: Build and Push
-      run: |
-        docker buildx create --use
-        docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/r3dmar/flask-app:latest .
-        docker push ghcr.io/r3dmar/flask-app:latest
-
+      - uses: actions/checkout@v3 
+      - name: build and push the image 
+        run: |
+          cd ./dockerfile
+          docker login -username r3dmar --password ${{ secrets.GHCR_LOGIN }} ghcr.io 
+          docker build . --tag ghcr.io/r3dmar/flask-app:latest
+          docker push ghcr.io/r3dmar/flask-app:latest
+          
