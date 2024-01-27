@@ -14,7 +14,6 @@ jobs:
       - name: build and push the image 
         run: |
           cd ./dockerfile
-          docker login -username r3dmar --password ${{ secrets.GHCR_LOGIN }} ghcr.io 
+          docker login ghcr.io -u r3dmar -p "${{ secrets.GHCR_LOGIN }}"
           docker build . --tag ghcr.io/r3dmar/flask-app:latest
           docker push ghcr.io/r3dmar/flask-app:latest
-          
